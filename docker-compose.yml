@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  zookeeper:
+    image: bitnami/zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      # Allow anonymous login for Zookeeper
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  kafka:
+    image: bitnami/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      # # Unique ID for the Kafka broker
+      # - KAFKA_BROKER_ID=1
+      # Zookeeper connection string for cluster coordination
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      # Map listener names to security protocols
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      # Define the network interfaces and ports for Kafka broker
+      - KAFKA_LISTENERS=PLAINTEXT://kafka:9092
+      # Advertise the address for client connections
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+    depends_on:
+      # Ensure Kafka starts after Zookeeper
+      - zookeeper 
