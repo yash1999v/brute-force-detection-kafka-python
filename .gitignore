@@ -2,3 +2,36 @@ consumer/logs/
 consumer/logs/alerts.log
 consumer/logs/alerts.log
 consumer/logs/alerts.log
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+dist/
+build/
+.env
+*.log
+
+# Docker
+*.tar
+*.img
+*.container
+
+# System files
+.DS_Store
+Thumbs.db
+
+# VS Code / IDEs
+.vscode/
+.idea/
+
+# Logs and temporary
+*.log
+logs/
+*.pid
+*.sqlite3
+
+# Byte-compiled / Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
