@@ -1,12 +1,37 @@
 import os
 import json
 import time
+import logging
 from kafka import KafkaConsumer
 from kafka.errors import NoBrokersAvailable
+from collections import defaultdict, deque
+from datetime import datetime, timedelta
 
 KAFKA_BROKER = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
 
-# Retry logic for Kafka connection
+# Ensure logs directory exists
+LOG_DIR = "logs"
+os.makedirs(LOG_DIR, exist_ok=True)
+
+LOG_FILE_PATH = os.path.join(LOG_DIR, "alerts.log")
+
+# Logging Setup (Console + File)
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[
+        logging.FileHandler(LOG_FILE_PATH),  # File output
+        logging.StreamHandler()              # Console output
+    ]
+)
+
+# Threshold Config
+FAILED_ATTEMPTS_THRESHOLD = 3  # Attempts
+TIME_WINDOW = 60  # Seconds
+
+failed_attempts = defaultdict(lambda: deque(maxlen=FAILED_ATTEMPTS_THRESHOLD))
+
+# Kafka Connection Retry Logic
 while True:
     try:
         consumer = KafkaConsumer(
@@ -14,11 +39,28 @@ while True:
             bootstrap_servers=KAFKA_BROKER,
             value_deserializer=lambda m: json.loads(m.decode('utf-8'))
         )
-        print("Connected to Kafka Broker!")
+        logging.info("Connected to Kafka Broker!")
         break
     except NoBrokersAvailable:
-        print("Kafka Broker not available. Retrying in 5 seconds...")
+        logging.warning("Kafka Broker not available. Retrying in 5 seconds...")
         time.sleep(5)
 
+# Main Consumer Logic
 for msg in consumer:
-    print(f"Received Message: {msg.value}")
+    event = msg.value
+    source_ip = event.get("source_ip")
+    status = event.get("status")
+
+    logging.info(f"Received login attempt from {source_ip} - Status: {status}")
+
+    if status == "failed_login":
+        current_time = datetime.now()
+        failed_attempts[source_ip].append(current_time)
+
+        if len(failed_attempts[source_ip]) == FAILED_ATTEMPTS_THRESHOLD:
+            time_diff = (current_time - failed_attempts[source_ip][0]).total_seconds()
+
+            if time_diff <= TIME_WINDOW:
+                logging.error(f"BRUTE FORCE DETECTED from {source_ip}")
+            else:
+                logging.warning(f"Suspicious activity from {source_ip}")

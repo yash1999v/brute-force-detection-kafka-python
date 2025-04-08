@@ -34,6 +34,8 @@ services:
     build: ./consumer
     depends_on:
       - kafka
+    volumes:
+      - ./consumer/logs:/app/logs  # Mount logs to host
     environment:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
     command: ["/wait-for-it.sh", "kafka:9092", "--", "python", "consumer.py"]

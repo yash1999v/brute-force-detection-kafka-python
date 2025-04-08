@@ -7,10 +7,21 @@ import random
 
 KAFKA_BROKER = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
 
-# Retry logic for Kafka Connection
+# Fixed IP List
+ip_list = [
+    "10.0.0.1",  # Attacker
+    "10.0.0.2",  # Attacker
+    "192.168.1.10",
+    "192.168.1.11",
+    "192.168.1.12",
+    "192.168.1.13",
+    "192.168.1.14",
+    "192.168.1.15",
+    "192.168.1.16",
+    "192.168.1.17"
+]
 
-def generate_random_ip():
-    return f"192.168.1.{random.randint(1, 254)}"
+# Retry logic for Kafka Connection
 while True:
     try:
         producer = KafkaProducer(
@@ -23,14 +34,21 @@ while True:
         print("Kafka Broker not available. Retrying in 5 seconds...")
         time.sleep(5)
 
-
-
+# Generate Logs
 while True:
+    ip = random.choice(ip_list)
+
+    if ip in ["10.0.0.1", "10.0.0.2"]:
+        status = "failed_login"
+    else:
+        status = "success_login"
+
     message = {
-        "source_ip": generate_random_ip(),
+        "source_ip": ip,
         "username": "admin",
-        "status": "failed_login"
+        "status": status
     }
+
     print(f"Sending Message: {message}")
     producer.send('brute-force-topic', value=message)
     time.sleep(5)
