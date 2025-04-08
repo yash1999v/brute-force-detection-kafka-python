@@ -14,12 +14,7 @@ ip_list = [
     "10.0.0.2",  # Attacker
     "192.168.1.10",
     "192.168.1.11",
-    "192.168.1.12",
-    "192.168.1.13",
-    "192.168.1.14",
-    "192.168.1.15",
-    "192.168.1.16",
-    "192.168.1.17"
+
 ]
 
 # Retry logic for Kafka Connection
@@ -55,4 +50,4 @@ while True:
 
     print(f"[{current_time}] Sending Message: {message}")
     producer.send('brute-force-topic_3', value=message)
-    time.sleep(120)
+    time.sleep(60)
