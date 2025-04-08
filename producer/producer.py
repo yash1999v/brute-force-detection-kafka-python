@@ -4,6 +4,7 @@ from kafka.errors import NoBrokersAvailable
 import json
 import time
 import random
+from datetime import datetime  # Added for timestamp
 
 KAFKA_BROKER = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")
 
@@ -43,12 +44,15 @@ while True:
     else:
         status = "success_login"
 
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Timestamp
+
     message = {
         "source_ip": ip,
         "username": "admin",
-        "status": status
+        "status": status,
+        "timestamp": current_time  # Added timestamp to message
     }
 
-    print(f"Sending Message: {message}")
-    producer.send('brute-force-topic', value=message)
+    print(f"[{current_time}] Sending Message: {message}")
+    producer.send('brute-force-topic_3', value=message)
     time.sleep(5)
