@@ -1,4 +1,5 @@
 import os
+import sys
 from kafka import KafkaProducer
 from kafka.errors import NoBrokersAvailable
 import json
@@ -14,6 +15,10 @@ ip_list = [
     "10.0.0.2",  # Attacker
     "192.168.1.10",
     "192.168.1.11",
+    "192.168.1.12",
+    "192.168.1.13",
+    "192.168.1.14",
+
 
 ]
 
