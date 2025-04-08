@@ -11,6 +11,6 @@ COPY producer.py .
 COPY wait-for-it.sh /wait-for-it.sh
 
 RUN chmod +x /wait-for-it.sh
+ENV PYTHONUNBUFFERED=1
 
-
-CMD ["python", "producer.py"]
+CMD ["python", "-u", "producer.py"]

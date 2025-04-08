@@ -25,9 +25,11 @@ while True:
             value_serializer=lambda v: json.dumps(v).encode('utf-8')
         )
         print("Connected to Kafka Broker!")
+        sys.stdout.flush()
         break
     except NoBrokersAvailable:
         print("Kafka Broker not available. Retrying in 5 seconds...")
+        sys.stdout.flush()
         time.sleep(5)
 
 # Generate Logs
@@ -49,5 +51,6 @@ while True:
     }
 
     print(f"[{current_time}] Sending Message: {message}")
+    sys.stdout.flush()
     producer.send('brute-force-topic_3', value=message)
-    time.sleep(60)
+    time.sleep(5)
