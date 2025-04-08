@@ -1,0 +1,124 @@
+2025-04-08 13:13:36,458 - INFO - <BrokerConnection client_id=kafka-python-2.1.5, node_id=bootstrap-0 host=kafka:9092 <connecting> [IPv4 ('172.18.0.3', 9092)]>: connecting to kafka:9092 [('172.18.0.3', 9092) IPv4]
+2025-04-08 13:13:36,764 - INFO - <BrokerConnection client_id=kafka-python-2.1.5, node_id=bootstrap-0 host=kafka:9092 <checking_api_versions_recv> [IPv4 ('172.18.0.3', 9092)]>: Broker version identified as 2.6
+2025-04-08 13:13:36,765 - INFO - <BrokerConnection client_id=kafka-python-2.1.5, node_id=bootstrap-0 host=kafka:9092 <connected> [IPv4 ('172.18.0.3', 9092)]>: Connection complete.
+2025-04-08 13:13:36,767 - WARNING - group_id is None: disabling auto-commit.
+2025-04-08 13:13:36,767 - INFO - Updating subscribed topics to: ('brute-force-topic',)
+2025-04-08 13:13:36,768 - INFO - Connected to Kafka Broker!
+2025-04-08 13:13:37,740 - INFO - Updated partition assignment: [TopicPartition(topic='brute-force-topic', partition=0)]
+2025-04-08 13:13:37,743 - INFO - <BrokerConnection client_id=kafka-python-2.1.5, node_id=1001 host=kafka:9092 <connecting> [IPv4 ('172.18.0.3', 9092)]>: connecting to kafka:9092 [('172.18.0.3', 9092) IPv4]
+2025-04-08 13:13:37,743 - INFO - <BrokerConnection client_id=kafka-python-2.1.5, node_id=1001 host=kafka:9092 <connected> [IPv4 ('172.18.0.3', 9092)]>: Connection complete.
+2025-04-08 13:13:37,744 - INFO - <BrokerConnection client_id=kafka-python-2.1.5, node_id=bootstrap-0 host=kafka:9092 <connected> [IPv4 ('172.18.0.3', 9092)]>: Closing connection. 
+2025-04-08 13:13:37,985 - INFO - Received login attempt from 192.168.1.17 - Status: success_login
+2025-04-08 13:13:42,790 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:13:46,560 - INFO - Received login attempt from 192.168.1.13 - Status: success_login
+2025-04-08 13:13:51,548 - INFO - Received login attempt from 192.168.1.10 - Status: success_login
+2025-04-08 13:13:56,556 - INFO - Received login attempt from 10.0.0.2 - Status: failed_login
+2025-04-08 13:14:01,571 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:14:06,572 - INFO - Received login attempt from 192.168.1.15 - Status: success_login
+2025-04-08 13:14:11,578 - INFO - Received login attempt from 10.0.0.2 - Status: failed_login
+2025-04-08 13:14:16,591 - INFO - Received login attempt from 10.0.0.2 - Status: failed_login
+2025-04-08 13:14:16,592 - ERROR - BRUTE FORCE DETECTED from 10.0.0.2
+2025-04-08 13:14:20,377 - INFO - Received login attempt from 192.168.1.11 - Status: success_login
+2025-04-08 13:14:25,377 - INFO - Received login attempt from 192.168.1.13 - Status: success_login
+2025-04-08 13:14:30,388 - INFO - Received login attempt from 192.168.1.14 - Status: success_login
+2025-04-08 13:14:35,397 - INFO - Received login attempt from 192.168.1.14 - Status: success_login
+2025-04-08 13:14:40,405 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:14:45,413 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:14:49,217 - INFO - Received login attempt from 192.168.1.14 - Status: success_login
+2025-04-08 13:14:54,222 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:14:59,220 - INFO - Received login attempt from 192.168.1.11 - Status: success_login
+2025-04-08 13:15:04,236 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:15:04,237 - WARNING - Suspicious activity from 10.0.0.1
+2025-04-08 13:15:09,246 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:15:09,247 - ERROR - BRUTE FORCE DETECTED from 10.0.0.1
+2025-04-08 13:15:14,250 - INFO - Received login attempt from 192.168.1.12 - Status: success_login
+2025-04-08 13:15:18,025 - INFO - Received login attempt from 192.168.1.10 - Status: success_login
+2025-04-08 13:15:23,039 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:15:28,048 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:15:28,049 - ERROR - BRUTE FORCE DETECTED from 10.0.0.1
+2025-04-08 13:15:33,044 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:15:33,045 - ERROR - BRUTE FORCE DETECTED from 10.0.0.1
+2025-04-08 13:15:38,062 - INFO - Received login attempt from 192.168.1.15 - Status: success_login
+2025-04-08 13:15:43,066 - INFO - Received login attempt from 192.168.1.13 - Status: success_login
+2025-04-08 13:15:48,078 - INFO - Received login attempt from 192.168.1.17 - Status: success_login
+2025-04-08 13:15:51,868 - INFO - Received login attempt from 192.168.1.12 - Status: success_login
+2025-04-08 13:15:56,893 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:15:56,894 - ERROR - BRUTE FORCE DETECTED from 10.0.0.1
+2025-04-08 13:16:01,884 - INFO - Received login attempt from 192.168.1.11 - Status: success_login
+2025-04-08 13:16:06,891 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:16:11,893 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:16:11,894 - ERROR - BRUTE FORCE DETECTED from 10.0.0.1
+2025-04-08 13:16:16,936 - INFO - Received login attempt from 192.168.1.12 - Status: success_login
+2025-04-08 13:16:20,671 - INFO - Received login attempt from 192.168.1.10 - Status: success_login
+2025-04-08 13:16:25,677 - INFO - Received login attempt from 192.168.1.17 - Status: success_login
+2025-04-08 13:16:30,688 - INFO - Received login attempt from 192.168.1.17 - Status: success_login
+2025-04-08 13:16:35,688 - INFO - Received login attempt from 192.168.1.17 - Status: success_login
+2025-04-08 13:16:40,694 - INFO - Received login attempt from 192.168.1.13 - Status: success_login
+2025-04-08 13:16:45,698 - INFO - Received login attempt from 10.0.0.2 - Status: failed_login
+2025-04-08 13:16:45,698 - WARNING - Suspicious activity from 10.0.0.2
+2025-04-08 13:16:50,708 - INFO - Received login attempt from 192.168.1.15 - Status: success_login
+2025-04-08 13:16:54,461 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:16:54,462 - ERROR - BRUTE FORCE DETECTED from 10.0.0.1
+2025-04-08 13:16:59,462 - INFO - Received login attempt from 192.168.1.14 - Status: success_login
+2025-04-08 13:17:04,475 - INFO - Received login attempt from 192.168.1.10 - Status: success_login
+2025-04-08 13:17:09,482 - INFO - Received login attempt from 192.168.1.12 - Status: success_login
+2025-04-08 13:17:14,490 - INFO - Received login attempt from 192.168.1.10 - Status: success_login
+2025-04-08 13:17:19,502 - INFO - Received login attempt from 192.168.1.12 - Status: success_login
+2025-04-08 13:17:23,248 - INFO - Received login attempt from 192.168.1.13 - Status: success_login
+2025-04-08 13:17:28,259 - INFO - Received login attempt from 192.168.1.11 - Status: success_login
+2025-04-08 13:17:33,265 - INFO - Received login attempt from 10.0.0.2 - Status: failed_login
+2025-04-08 13:17:33,266 - WARNING - Suspicious activity from 10.0.0.2
+2025-04-08 13:17:38,269 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:17:43,278 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:17:48,280 - INFO - Received login attempt from 192.168.1.13 - Status: success_login
+2025-04-08 13:17:53,292 - INFO - Received login attempt from 192.168.1.11 - Status: success_login
+2025-04-08 13:17:57,094 - INFO - Received login attempt from 192.168.1.15 - Status: success_login
+2025-04-08 13:18:02,100 - INFO - Received login attempt from 10.0.0.2 - Status: failed_login
+2025-04-08 13:18:02,101 - WARNING - Suspicious activity from 10.0.0.2
+2025-04-08 13:18:07,108 - INFO - Received login attempt from 192.168.1.17 - Status: success_login
+2025-04-08 13:18:12,130 - INFO - Received login attempt from 192.168.1.10 - Status: success_login
+2025-04-08 13:18:17,129 - INFO - Received login attempt from 10.0.0.2 - Status: failed_login
+2025-04-08 13:18:17,130 - ERROR - BRUTE FORCE DETECTED from 10.0.0.2
+2025-04-08 13:18:22,139 - INFO - Received login attempt from 192.168.1.12 - Status: success_login
+2025-04-08 13:18:25,910 - INFO - Received login attempt from 192.168.1.10 - Status: success_login
+2025-04-08 13:18:30,921 - INFO - Received login attempt from 192.168.1.14 - Status: success_login
+2025-04-08 13:18:35,925 - INFO - Received login attempt from 192.168.1.15 - Status: success_login
+2025-04-08 13:18:40,937 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:18:40,938 - WARNING - Suspicious activity from 10.0.0.1
+2025-04-08 13:18:45,945 - INFO - Received login attempt from 192.168.1.15 - Status: success_login
+2025-04-08 13:18:50,948 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:18:50,950 - WARNING - Suspicious activity from 10.0.0.1
+2025-04-08 13:18:55,954 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:18:55,955 - ERROR - BRUTE FORCE DETECTED from 10.0.0.1
+2025-04-08 13:18:59,710 - INFO - Received login attempt from 192.168.1.17 - Status: success_login
+2025-04-08 13:19:04,716 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:19:09,723 - INFO - Received login attempt from 192.168.1.12 - Status: success_login
+2025-04-08 13:19:14,734 - INFO - Received login attempt from 192.168.1.15 - Status: success_login
+2025-04-08 13:19:19,735 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:19:24,744 - INFO - Received login attempt from 10.0.0.2 - Status: failed_login
+2025-04-08 13:19:24,745 - WARNING - Suspicious activity from 10.0.0.2
+2025-04-08 13:19:28,522 - INFO - Received login attempt from 192.168.1.15 - Status: success_login
+2025-04-08 13:19:33,530 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:19:38,537 - INFO - Received login attempt from 192.168.1.17 - Status: success_login
+2025-04-08 13:19:43,547 - INFO - Received login attempt from 192.168.1.12 - Status: success_login
+2025-04-08 13:19:48,556 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:19:53,567 - INFO - Received login attempt from 192.168.1.17 - Status: success_login
+2025-04-08 13:19:57,329 - INFO - Received login attempt from 192.168.1.11 - Status: success_login
+2025-04-08 13:20:02,342 - INFO - Received login attempt from 192.168.1.14 - Status: success_login
+2025-04-08 13:20:07,354 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:20:07,356 - WARNING - Suspicious activity from 10.0.0.1
+2025-04-08 13:20:12,345 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:20:17,359 - INFO - Received login attempt from 192.168.1.14 - Status: success_login
+2025-04-08 13:20:22,368 - INFO - Received login attempt from 192.168.1.11 - Status: success_login
+2025-04-08 13:20:27,378 - INFO - Received login attempt from 192.168.1.10 - Status: success_login
+2025-04-08 13:20:31,114 - INFO - Received login attempt from 192.168.1.13 - Status: success_login
+2025-04-08 13:20:36,142 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:20:41,138 - INFO - Received login attempt from 192.168.1.12 - Status: success_login
+2025-04-08 13:20:46,154 - INFO - Received login attempt from 192.168.1.16 - Status: success_login
+2025-04-08 13:20:51,162 - INFO - Received login attempt from 10.0.0.2 - Status: failed_login
+2025-04-08 13:20:51,164 - WARNING - Suspicious activity from 10.0.0.2
+2025-04-08 13:20:56,162 - INFO - Received login attempt from 192.168.1.15 - Status: success_login
+2025-04-08 13:20:59,945 - INFO - Received login attempt from 192.168.1.13 - Status: success_login
+2025-04-08 13:21:04,969 - INFO - Received login attempt from 10.0.0.1 - Status: failed_login
+2025-04-08 13:21:04,970 - WARNING - Suspicious activity from 10.0.0.1
+2025-04-08 13:21:09,966 - INFO - Received login attempt from 192.168.1.11 - Status: success_login
