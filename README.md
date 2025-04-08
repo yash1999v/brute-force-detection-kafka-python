@@ -103,4 +103,4 @@ Thanks to the original author for this helpful script!
 If you find this project helpful or have learned something from it, kindly give credit or mention this repository when using any part of it in your own projects.
 
 ## Connect
-*Built with passion for learning and sharing DevOps knowledge. Connect with me on [LinkedIn](www.linkedin.com/in/yashwanth-v-83591a1ba) to stay updated on my DevOps journey and future projects!*
+*Built with passion for learning and sharing DevOps knowledge. Connect with me on [LinkedIn](https://www.linkedin.com/in/yashwanth-v-83591a1ba/) to stay updated on my DevOps journey and future projects!*
