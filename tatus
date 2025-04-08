@@ -1,0 +1,105 @@
+[1mdiff --git a/consumer/Dockerfile b/consumer/Dockerfile[m
+[1mindex e69de29..dd75908 100644[m
+[1m--- a/consumer/Dockerfile[m
+[1m+++ b/consumer/Dockerfile[m
+[36m@@ -0,0 +1,15 @@[m
+[32m+[m[32mFROM python:3.9-slim[m
+[32m+[m
+[32m+[m[32mWORKDIR /app[m
+[32m+[m
+[32m+[m[32mCOPY requirements.txt .[m
+[32m+[m
+[32m+[m[32mRUN pip install -r requirements.txt[m
+[32m+[m
+[32m+[m[32mCOPY consumer.py .[m
+[32m+[m
+[32m+[m[32mCOPY wait-for-it.sh /wait-for-it.sh[m
+[32m+[m[32mRUN chmod +x /wait-for-it.sh[m
+[32m+[m
+[32m+[m
+[32m+[m[32mCMD ["python", "consumer.py"][m
+[1mdiff --git a/consumer/consumer.py b/consumer/consumer.py[m
+[1mindex e69de29..011b170 100644[m
+[1m--- a/consumer/consumer.py[m
+[1m+++ b/consumer/consumer.py[m
+[36m@@ -0,0 +1,24 @@[m
+[32m+[m[32mimport os[m
+[32m+[m[32mimport json[m
+[32m+[m[32mimport time[m
+[32m+[m[32mfrom kafka import KafkaConsumer[m
+[32m+[m[32mfrom kafka.errors import NoBrokersAvailable[m
+[32m+[m
+[32m+[m[32mKAFKA_BROKER = os.getenv("KAFKA_BOOTSTRAP_SERVERS", "localhost:9092")[m
+[32m+[m
+[32m+[m[32m# Retry logic for Kafka connection[m
+[32m+[m[32mwhile True:[m
+[32m+[m[32m    try:[m
+[32m+[m[32m        consumer = KafkaConsumer([m
+[32m+[m[32m            'brute-force-topic',[m
+[32m+[m[32m            bootstrap_servers=KAFKA_BROKER,[m
+[32m+[m[32m            value_deserializer=lambda m: json.loads(m.decode('utf-8'))[m
+[32m+[m[32m        )[m
+[32m+[m[32m        print("Connected to Kafka Broker!")[m
+[32m+[m[32m        break[m
+[32m+[m[32m    except NoBrokersAvailable:[m
+[32m+[m[32m        print("Kafka Broker not available. Retrying in 5 seconds...")[m
+[32m+[m[32m        time.sleep(5)[m
+[32m+[m
+[32m+[m[32mfor msg in consumer:[m
+[32m+[m[32m    print(f"Received Message: {msg.value}")[m
+[1mdiff --git a/consumer/requirements.txt b/consumer/requirements.txt[m
+[1mindex e69de29..d328a91 100644[m
+[1m--- a/consumer/requirements.txt[m
+[1m+++ b/consumer/requirements.txt[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mkafka-python[m
+[1mdiff --git a/docker-compose.yml b/docker-compose.yml[m
+[1mindex 3be9a45..91780bc 100644[m
+[1m--- a/docker-compose.yml[m
+[1m+++ b/docker-compose.yml[m
+[36m@@ -2,31 +2,39 @@[m [mversion: '3.8'[m
+ [m
+ services:[m
+   zookeeper:[m
+[31m-    image: bitnami/zookeeper:latest[m
+[31m-    container_name: zookeeper[m
+[32m+[m[32m    image: wurstmeister/zookeeper[m
+     ports:[m
+       - "2181:2181"[m
+[31m-    environment:[m
+[31m-      # Allow anonymous login for Zookeeper[m
+[31m-      - ALLOW_ANONYMOUS_LOGIN=yes[m
+[32m+[m[32m    restart: always[m
+ [m
+   kafka:[m
+[31m-    image: bitnami/kafka:latest[m
+[31m-    container_name: kafka[m
+[32m+[m[32m    image: wurstmeister/kafka[m
+     ports:[m
+       - "9092:9092"[m
+     environment:[m
+[31m-      # # Unique ID for the Kafka broker[m
+[31m-      # - KAFKA_BROKER_ID=1[m
+[31m-      # Zookeeper connection string for cluster coordination[m
+[31m-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181[m
+[31m-      # Map listener names to security protocols[m
+[31m-      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT[m
+[31m-      - ALLOW_PLAINTEXT_LISTENER=yes[m
+[31m-      # Define the network interfaces and ports for Kafka broker[m
+[31m-      - KAFKA_LISTENERS=PLAINTEXT://kafka:9092[m
+[31m-      # Advertise the address for client connections[m
+[31m-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092[m
+[32m+[m[32m      KAFKA_ADVERTISED_HOST_NAME: kafka[m
+[32m+[m[32m      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181[m
+[32m+[m[32m      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092[m
+[32m+[m[32m    depends_on:[m
+[32m+[m[32m      - zookeeper[m
+[32m+[m[32m    restart: always[m
+[32m+[m[32m    volumes:[m
+[32m+[m[32m      - /tmp/kafka-logs:/kafka/kafka-logs # optional[m
+[32m+[m
+[32m+[m[32m  producer:[m
+[32m+[m[32m    build: ./producer[m
+     depends_on:[m
+[31m-      # Ensure Kafka starts after Zookeeper[m
+[31m-      - 
