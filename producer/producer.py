@@ -55,4 +55,4 @@ while True:
 
     print(f"[{current_time}] Sending Message: {message}")
     producer.send('brute-force-topic_3', value=message)
-    time.sleep(5)
+    time.sleep(120)
