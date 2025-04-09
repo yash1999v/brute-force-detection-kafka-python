@@ -27,7 +27,7 @@ logging.basicConfig(
 
 # Threshold Config
 FAILED_ATTEMPTS_THRESHOLD = 3  # Attempts
-TIME_WINDOW = 60  # Seconds
+TIME_WINDOW = 300  # Seconds
 
 failed_attempts = defaultdict(lambda: deque(maxlen=FAILED_ATTEMPTS_THRESHOLD))
 

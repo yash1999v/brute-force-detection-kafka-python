@@ -14,9 +14,14 @@ ip_list = [
     "10.0.0.1",  # Attacker
     "10.0.0.2",  # Attacker
     "192.168.1.10",
-    "192.168.1.11"
-    
-
+    "192.168.1.12",
+    "192.168.1.13",
+    "192.168.1.14",
+    "192.168.1.15",
+    "192.168.1.16",
+    "192.168.1.17",
+    "192.168.1.18",
+    "192.168.1.19",
 
 ]
 
@@ -40,9 +45,9 @@ while True:
     ip = random.choice(ip_list)
 
     if ip in ["10.0.0.1", "10.0.0.2"]:
-        status = "failed_login"
+        status = "failed_login" if random.random() < 0.8 else "success_login"
     else:
-        status = "success_login"
+        status = "success_login" if random.random() < 0.9 else "failed_login"
 
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Timestamp
 
