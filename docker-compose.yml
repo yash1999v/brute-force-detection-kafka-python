@@ -40,3 +40,16 @@ services:
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
     command: ["/wait-for-it.sh", "kafka:9092", "--", "python", "consumer.py"]
     restart: always
+  
+  dashboard:
+    build: ./dashboard
+    ports:
+      - "5000:5000"  # Flask API exposed on host
+    depends_on:
+      - consumer
+    volumes:
+      - ./consumer/logs:/app/logs  # Shared log volume
+    command: ["python", "app.py"]
+    restart: always
+
+  
